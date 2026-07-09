@@ -506,8 +506,8 @@ def gp_priors_quiz():
             <h4 style="color: #1e293b; margin-top: 10px; margin-bottom: 8px; font-size: 1.1rem; font-weight: 700; line-height: 1.4;">
                 To conduct learning using Gaussian Processes, you need to specify the prior distributions. What values should we take as the prior means 
                 <math display="inline"><mi>&mu;</mi></math> for 
-                <math display="inline"><msup><mi>&mu;</mi><mo>&prime;</mo></msup></math> and 
-                <math display="inline"><mi>f</mi></math> for 
+                <math display="inline"><mi>f</mi></math> and 
+                <math display="inline"><msup><mi>&mu;</mi><mo>&prime;</mo></msup></math> for 
                 <math display="inline"><mi>g</mi></math>?
             </h4>
         </div>
