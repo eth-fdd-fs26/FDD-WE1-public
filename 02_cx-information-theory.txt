@@ -1,0 +1,50 @@
+I am currently working on another exercise that would be an exercise on information theory. the shape of this notebook would be in the same style as the ensemble_maintenance notebooks.
+
+We are working on a Customer Support Ticket Routing scenario, where we assume that we have an AI model that classifies tickets in the following categories:
+billing
+technical_issue
+refund_request
+sales_question
+account_access
+urgent_complaint
+
+All this is based on some features for example:
+
+| Column                 | Type                | Description                                                          |
+| ---------------------- | ------------------- | -------------------------------------------------------------------- |
+| `ticket_id`            | string/int          | Unique ticket identifier                                             |
+| `customer_plan`        | categorical         | Customer subscription plan                                           |
+| `region`               | categorical         | Customer region                                                      |
+| `product_area`         | categorical         | Product/module related to the ticket                                 |
+| `message_length`       | numerical           | Number of characters or words in the ticket                          |
+| `waiting_time_hours`   | numerical           | Time since ticket submission                                         |
+| `previous_tickets_30d` | numerical           | Number of tickets submitted by the same customer in the last 30 days |
+| `submitted_weekend`    | boolean             | Whether the ticket was submitted during the weekend                  |
+| `customer_value_score` | numerical, optional | Business value of the customer, for prioritization                   |
+
+There might be more to add depending on what you think might be useful for the exercise.
+
+The idea is to create an exercise where the participants of the course have to learn entropy, cross entropy, KL divergence and mutual information.
+The idea is to assume that the model is black box (it might actually not exist) and we have access to the historical dat that it trained on (large dataset) and the current data, which is the data of the past 3 months. Assume that each monts a large amount of tickets are produced.
+The participants will act as if they were the data analysts, trying to understand the performances decline and problems of the model. Throughout the notebook, we will tackle different problematic elements of the dataset and prediction.
+
+Part 1: Entropy. The idea is that they have seen that sometimes the model is not very sure one its answer. it might take some decisions greedily, but in reality the scores of each class are very close. Sometimes it turns out to be correct, but other times no.
+Therefore, they have decided to dedicate some employees that should treat manually the tickets that the model is the most unsure of. They can treat as much 15 % of the most uncertain tickets.
+In this context, we should teach them how entropy works, why it's the correct metric, through visualizations explanations, and them implementing things (both the entropy, and its application on the data, and finally the policy of routing tickets).
+
+Part 2: Cross Entropy. Now that the unsure tickets are out of the way and correctly classified, we see that there still are some problems in terms of how well the tickets are classified. They should learn about cross entropy by applying it on the samples that are note handled by humans.
+This gives the answer on how wrong the prediction where, on which samples the model gave a lot of importance to a certain class, which was not the one that should have been correct, and little mass to the correct ont.
+
+Part 3: KL divergence. You notice that most of the cross entropy loss bad results are on samples that should be classified to urgent complaints, that before where a minor class.
+They therefore want to know if maybe the distribution shifted. so they compyte the KL divergence accross all the tickets to see if the distribution shifted compared to historically -> Global KL score
+They see that it changed and they want to see which category/categories contributes the most to the general shift. (KL contribution by category)
+Finally, you know that your compagny has produced large updates on all of their products 3 months ago. You want to know if some of these caused the distribution shifts this month -> compute KL divergence per product.
+
+
+Part 4: Mutual information: compare between before and now which features give the most information about the result in the "distribution shifted" product and maybe on the urgent category.
+
+
+So these are the four parts, they should be understandable for the student, and show a progression throughout the notebook with HTML visualizations and diagram that show the progress and that explain each part or each concept. Could be some interactive activities for some concept for example.
+Make sure to craft a nice dataset, use scripts that make sense for the arguments that needs to be shown (make sure of how everything turns out, make an good amount of data).
+
+Think about this, read the examples notebooks and ask all of the necessary questions before starting or throughout the process
